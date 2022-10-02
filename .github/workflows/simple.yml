@@ -20,9 +20,10 @@ jobs:
           print(platform.processor())
         shell: python
   
-  # Steps for windows
+  # Steps for windows we are able to run job in parallel here with this step, we added the needs[] key which is an array of jobs that the run-windows-command depends in this example
   run-windows-commands:
     runs-on: windows-latest
+    needs: ["run-shell-command"]
     steps: 
       - name: Directory Powershell
         run: Get-Location
