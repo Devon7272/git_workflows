@@ -1,0 +1,17 @@
+name: shell commands
+# list of objects
+on: [push]
+
+jobs: 
+  run-shell-command: 
+    runs-on: ubuntu-latest
+    # an array of objects, steps can perform actions
+    steps:
+      - name: echo a string
+        run: echo "Hello world"
+      - name: multiline script
+        # the pipe is used to run multiple commands
+        run: |
+          node -v
+          npm -v
+ 
