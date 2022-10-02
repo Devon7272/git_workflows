@@ -8,10 +8,15 @@ jobs:
     # an array of objects, steps can perform actions
     steps:
       - name: echo a string
-        run: ecsho "Hello world"
+        run: echo "Hello world"
       - name: multiline script
         # the pipe is used to run multiple commands
         run: |
           node -v
           npm -v
+      - name: python Commands
+        run: | 
+          import platform
+          print(platform.processor())
+        shell: python
  
