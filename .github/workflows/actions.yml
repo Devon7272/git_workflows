@@ -1,3 +1,4 @@
+# Actions are code that do a specific tasks
 name: Actions Workflow
 
 on: [push]
@@ -6,6 +7,10 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps: 
+      - name: List Files
+        run: | 
+          pwd 
+          ls
       - name: Simple JS Action 
         id: greet
         uses: actions/hello-world-javascript-action@v1
