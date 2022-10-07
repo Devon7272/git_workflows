@@ -1,7 +1,7 @@
 # Actions are code that do a specific tasks
 name: Actions Workflow
-
-on: [push]
+# Here we are adding a pull_request
+on: [push, pull_request]
 
 jobs:
   run-github-actions:
@@ -12,7 +12,7 @@ jobs:
           pwd 
           ls -a 
       - name: Checkout
-      # actions/checkout will authenticate with our repo fetch the code checkout into the commit that triggered this workflow to run
+      # actions/checkout will authenticate with our repo fetch the code checkout into the commit that triggered this workflow to run. We can also use environment variables to acomplish the same task as actions/checkout. We can also use other actions in the github actons marketplace that people and organizations create for our worflows
         uses: actions/checkout@v1
       - name: List Files After Checkout
         run: | 
