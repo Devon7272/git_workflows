@@ -1,6 +1,6 @@
 name: shell commands
 # list of objects
-on: [push]
+on: [pull_request]
 
 jobs: 
   run-shell-command: 
