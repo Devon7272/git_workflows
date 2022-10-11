@@ -1,13 +1,16 @@
 # Actions are code that do a specific tasks
-name: Actions Workflow
 # Here we are adding a pull_request event, by default this will only run on open not close. Below we are using pull request as an object instead of an array on push and are passing types into an array.
 # We are now adding a cron job to our workflow by using schedule.
+
+# actions/checkout will authenticate with our repo fetch the code checkout into the commit that triggered this workflow to run. We can also use environment variables to acomplish the same task as actions/checkout. We can also use other actions in the github actons marketplace that people and organizations create for our worflows. Our GITHUB_SHA is aour branch ID, GITHUB_REPOSITORY is our repo we are working in.
+name: Actions Workflow
+
 on:
   repository_dispatch:
     types: [build]
-  # schedule:
-  #   - cron: "0/5 * * * *"
-  #push: 
+    # schedule:
+    #  - cron: "0/5 * * * *"
+    # push: 
   pull_request:
     types: [closed, assigned, opened, reopened]
 
@@ -21,7 +24,7 @@ jobs:
           pwd 
           ls -a 
       - name: Checkout
-      # actions/checkout will authenticate with our repo fetch the code checkout into the commit that triggered this workflow to run. We can also use environment variables to acomplish the same task as actions/checkout. We can also use other actions in the github actons marketplace that people and organizations create for our worflows. Our GITHUB_SHA is aour branch ID, GITHUB_REPOSITORY is our repo we are working in.
+
         uses: actions/checkout@v1
       - name: List Files After Checkout
         run: | 
@@ -31,8 +34,8 @@ jobs:
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
           echo "${{ github.token }}"
-         # git clone git@github:$GITHUB_REPOSITORY
-         # git checkout $GITHUB_SHA
+          # git clone git@github:$GITHUB_REPOSITORY
+          # git checkout $GITHUB_SHA
       - name: Simple JS Action 
         id: greet
         uses: actions/hello-world-javascript-action@v1
