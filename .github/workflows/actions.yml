@@ -1,0 +1,15 @@
+name: Actions Workflow 
+
+on: [push]
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps: 
+      # the actions here allows us to reference a git repo either by the commit ID, the tag or branch. If we wanted to log the greeting time for our java script app we have to reference our steps section with and echo "${{ steps . }}" this allows us to reference the steps section in our code.
+      - name: Simple JS Action 
+        uses: actions/hello-world-javascript-action@v1.1
+        with:
+          who-to-greet: Devon
+      - name: Log Greeting Time
+        run: echo "${{ steps. }}"
